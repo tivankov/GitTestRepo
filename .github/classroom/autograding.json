@@ -1,0 +1,24 @@
+{
+  "tests": [
+    {
+      "name": "Build Servers Test",
+      "setup": "mvn compile",
+      "run": "mvn -Dests=BuildServersTest#getServerBasedOnOrder test",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 10
+    },
+    {
+      "name": "Servers Per Type",
+      "setup": "mvn compile",
+      "run": "mvn -Dests=BuildServersTest#serversPerType test",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 15
+    }
+  ]
+}
