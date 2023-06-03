@@ -7,40 +7,34 @@ public class BuildServers {
 
     private static String[] serverOrder = {"AuthenticationServer", "FileServer", "WebServer"};
 
-
-    public static HashMap<String, Integer> countServerTypes(List<Server> servers){
-        HashMap<String, Integer> serverList = new HashMap<>();
-        for (Server server : servers){
-            String serverType = serverList.getClass().getSimpleName();
-            if (serverList.containsKey(serverType)){
-                int cnt = serverList.get(serverType);
-                serverList.put(serverType, cnt++);
-            }else {
-                serverList.put(serverType, 1);
-            }
+    public static HashMap<String, Integer> countServerTypes(List<Server> servers) {
+        HashMap<String, Integer> serverTypeCount = new HashMap<>();
+        for (Server server : servers) {
+            String serverType = server.getClass().getSimpleName();
+            serverTypeCount.put(serverType, serverTypeCount.getOrDefault(serverType, 0) + 1);
         }
-
-        return serverList;
+        return serverTypeCount;
     }
 
-    public static void createServers(List<Server> servers, int numServers, int port, String ipAddr){
-
-        if (numServers == 0 || numServers <= 2){
-            servers.add(getServerBasedOnOrder(numServers, port, ipAddr));
+    public static void createServers(List<Server> servers, int numServers, int port, String ipAddr) {
+        int startIndex = servers.size() % serverOrder.length; // Osmislite princip za odabir početnog indeksa
+        for (int i = 0; i < numServers; i++) {
+            int index = (startIndex + i) % serverOrder.length;
+            Server server = getServerBasedOnOrder(index, port, ipAddr);
+            servers.add(server);
         }
     }
 
     public static Server getServerBasedOnOrder(int index, int port, String ipAddr) {
-        Server server = null;
-        if (index == 0){
-            server = new AuthenticationServer(port, ipAddr);
-        }else if(index == 1){
-            server = new FileServer(port, ipAddr);
-        }else if(index == 2){
-            server = new WebServer(port, ipAddr);
-        }else {
-            System.out.println("Krivi unos za odabir servera");
+        switch (serverOrder[index]) {
+            case "AuthenticationServer":
+                return new AuthenticationServer(port, ipAddr);
+            case "FileServer":
+                return new FileServer(port, ipAddr);
+            case "WebServer":
+                return new WebServer(port, ipAddr);
+            default:
+                throw new IllegalArgumentException("Invalid server index: " + index);
         }
-        return server;
     }
 }
