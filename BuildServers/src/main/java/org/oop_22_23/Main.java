@@ -6,4 +6,7 @@ import java.util.ArrayList;
 public class Main {
 
     // Ovdje možete istestirati BuildServers klasu
+    public static void main(String[] args) {
+//        BuildServers.
+    }
 }

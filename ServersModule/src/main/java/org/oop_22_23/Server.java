@@ -8,15 +8,18 @@ public abstract class Server {
     
     
      // dodati pripade modifikatore pristupa
-    int id;
-    int port;
-    String ipAddr;
-    static int cntrID = 10;
+    protected int id;
+    protected int port;
+    protected String ipAddr;
+    protected static int cntrID = 10;
 
     String disableConn;
     
     // kreirati konstruktor, ali paziti na modifikator pristupa!!!
-   
+   protected Server(int port, String ipAddr){
+       this.port = port;
+       this.ipAddr = ipAddr;
+   }
     
 
 
