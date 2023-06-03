@@ -10,7 +10,7 @@ public class BuildServers {
     public static HashMap<String, Integer> countServerTypes(List<Server> servers) {
         HashMap<String, Integer> serverList = new HashMap<>();
         for (Server server : servers){
-            String serverType = server.getClass().getSimpleName();
+            String serverType = servers.getClass().getSimpleName();
             if (serverList.containsKey(serverType)){
                 int cnt = serverList.get(serverType);
                 serverList.put(serverType, cnt++);
