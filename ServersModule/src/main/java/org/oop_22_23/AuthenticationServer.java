@@ -2,7 +2,7 @@ package org.oop_22_23;
 
 public class AuthenticationServer extends Server{
     protected AuthenticationServer(int port, String ipAddr){
-        super(port, ipAddr);
+        super();
         this.port = port;
         this.ipAddr = ipAddr;
     }

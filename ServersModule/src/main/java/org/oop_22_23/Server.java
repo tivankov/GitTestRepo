@@ -16,7 +16,7 @@ public abstract class Server {
     String disableConn;
     
     // kreirati konstruktor, ali paziti na modifikator pristupa!!!
-   protected Server(int port, String ipAddr){
+   protected Server(){
        this.port = port;
        this.ipAddr = ipAddr;
    }

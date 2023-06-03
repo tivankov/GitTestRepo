@@ -34,7 +34,12 @@ public class BuildServers {
     }
 
     public static Server getServerBasedOnOrder(int serverType, int port, String ipAddr) {
-        Server server = null;
+        Server server= new Server() {
+            @Override
+            protected void disableConnection() {
+
+            }
+        };
         if (serverType == 0) {
             server = new AuthenticationServer(port, ipAddr);
         } else if (serverType == 1) {
