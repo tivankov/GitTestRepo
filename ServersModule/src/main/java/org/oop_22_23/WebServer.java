@@ -4,7 +4,7 @@ public class WebServer extends Server{
 
 
     protected WebServer(int port, String ipAddr) {
-        super();
+        super(port, ipAddr);
     }
 
     @Override

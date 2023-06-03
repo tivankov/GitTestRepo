@@ -4,7 +4,7 @@ public class FileServer extends Server{
 
 
     protected FileServer(Integer port, String ipAddr) {
-        super();
+        super(port, ipAddr);
     }
 
     @Override
