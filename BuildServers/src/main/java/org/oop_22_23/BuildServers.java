@@ -8,18 +8,17 @@ public class BuildServers {
     private static String[] serverOrder = {"AuthenticationServer", "FileServer", "WebServer"};
 
 
-    public static HashMap<String, Integer> countServerTypes(List<Server> servers){
+    public static HashMap<String, Integer> countServerTypes(List<Server> servers) {
         HashMap<String, Integer> serverList = new HashMap<>();
+        int cnt = 0;
         for (Server server : servers){
-            String serverType = serverList.getClass().getSimpleName();
+            String serverType = server.getClass().getSimpleName();
             if (serverList.containsKey(serverType)){
-                int cnt = serverList.get(serverType);
                 serverList.put(serverType, cnt++);
             }else {
                 serverList.put(serverType, 1);
             }
         }
-
         return serverList;
     }
 
